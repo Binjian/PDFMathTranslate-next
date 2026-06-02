@@ -226,6 +226,14 @@ class OllamaSettings(BaseModel):
     num_predict: int | None = Field(
         default=2000, description="The max number of token to predict."
     )
+    ollama_timeout: str | None = Field(
+        default="300",
+        description="Timeout in seconds for Ollama requests (0 = no timeout)",
+    )
+    ollama_think: str | None = Field(
+        default="false",
+        description="Enable thinking for Ollama models (true/false/auto/low/medium/high)",
+    )
 
     def validate_settings(self) -> None:
         if not self.ollama_host:
