@@ -384,7 +384,7 @@ async def _translate_in_subprocess(
 
     recv_t = threading.Thread(target=recv_thread)
     recv_t.start()
-    log_t = threading.Thread(target=log_thread)
+    log_t = threading.Thread(target=log_thread, daemon=True)
     log_t.start()
 
     translate_process = multiprocessing.Process(
